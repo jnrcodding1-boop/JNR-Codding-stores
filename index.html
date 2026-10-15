@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop electronics, fashion, home products, gaming and more at JNR Codding Store.">
+  <title>JNR Codding Store</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <a class="logo" href="#home">JNR <span>Codding</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+    <nav class="nav" id="navLinks">
+      <a href="#home" data-page="home">Home</a>
+      <a href="#shop" data-page="shop">Shop</a>
+      <a href="#orders" data-page="orders">My Orders</a>
+      <a href="#contact" data-page="contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="themeToggle" class="icon-button" aria-label="Toggle dark mode">🌙</button>
+      <button class="icon-button" data-page="wishlist" aria-label="Wishlist">
+        ♡ <span id="wishlistCount">0</span>
+      </button>
+      <button class="icon-button" data-page="cart" aria-label="Shopping cart">
+        🛒 <span id="cartCount">0</span>
+      </button>
+      <button class="icon-button" data-page="account" aria-label="My account">👤</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-view" id="homePage">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">WELCOME TO JNR CODDING STORE</p>
+          <h1>Everything you need, <span>in one store.</span></h1>
+          <p>Explore electronics, fashion, home essentials, gaming products and much more.</p>
+          <button class="primary-button" data-page="shop">Shop Now →</button>
+        </div>
+        <div class="hero-art" aria-hidden="true">🛍️</div>
+      </div>
+
+      <section class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">EXPLORE</p>
+            <h2>Shop by Category</h2>
+          </div>
+        </div>
+        <div id="categoryGrid" class="category-grid"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">HANDPICKED FOR YOU</p>
+            <h2>Featured Products</h2>
+          </div>
+          <button class="text-button" data-page="shop">View All →</button>
+        </div>
+        <div id="homeProducts" class="product-grid"></div>
+      </section>
+    </section>
+
+    <section class="page-view hidden" id="shopPage">
+      <div class="page-heading">
+        <p class="eyebrow">FIND YOUR FAVOURITES</p>
+        <h1>Shop All Products</h1>
+        <p>Choose from a variety of products and categories.</p>
+      </div>
+
+      <form id="searchForm" class="search-bar">
+        <input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products">
+        <button class="primary-button" type="submit">Search</button>
+      </form>
+
+      <div class="filters">
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="all">All Categories</option>
+        </select>
+
+        <select id="sortFilter" aria-label="Sort products">
+          <option value="default">Sort: Recommended</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="name">Name: A–Z</option>
+        </select>
+
+        <input id="maxPrice" type="number" min="0" placeholder="Maximum price (₦)" aria-label="Maximum price">
+        <button id="resetFilters" class="secondary-button" type="button">Reset</button>
+      </div>
+
+      <p id="productResultCount" class="muted"></p>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+
+    <section class="page-view hidden" id="wishlistPage">
+      <div class="page-heading">
+        <h1>My Wishlist ♡</h1>
+        <p>Products you have saved for later.</p>
+      </div>
+      <div id="wishlistProducts" class="product-grid"></div>
+    </section>
+
+    <section class="page-view hidden" id="cartPage">
+      <div class="page-heading">
+        <h1>Shopping Cart 🛒</h1>
+        <p>Review your items before checkout.</p>
+      </div>
+      <div id="cartContent"></div>
+    </section>
+
+    <section class="page-view hidden" id="checkoutPage">
+      <div class="page-heading">
+        <h1>Checkout</h1>
+        <p>Enter your details to place your order.</p>
+      </div>
+
+      <div id="checkoutContent"></div>
+    </section>
+
+    <section class="page-view hidden" id="confirmationPage">
+      <div id="confirmationContent"></div>
+    </section>
+
+    <section class="page-view hidden" id="ordersPage">
+      <div class="page-heading">
+        <h1>My Orders</h1>
+        <p>See the orders placed on this browser.</p>
+      </div>
+      <div id="ordersContent"></div>
+    </section>
+
+    <section class="page-view hidden" id="accountPage">
+      <div class="page-heading">
+        <h1>My Account 👤</h1>
+        <p>Save your contact and delivery information.</p>
+      </div>
+
+      <form id="accountForm" class="form-card">
+        <label for="accountName">Full Name</label>
+        <input id="accountName" required placeholder="Enter your full name">
+
+        <label for="accountPhone">Phone Number</label>
+        <input id="accountPhone" type="tel" required placeholder="Enter your phone number">
+
+        <label for="accountEmail">Email Address</label>
+        <input id="accountEmail" type="email" placeholder="Enter your email">
+
+        <label for="accountAddress">Delivery Address</label>
+        <textarea id="accountAddress" required rows="3" placeholder="Enter your delivery address"></textarea>
+
+        <button class="primary-button" type="submit">Save My Details</button>
+      </form>
+    </section>
+
+    <section class="page-view hidden" id="contactPage">
+      <div class="page-heading">
+        <h1>Contact Us</h1>
+        <p>Have a question about an order or product?</p>
+      </div>
+      <div class="contact-card">
+        <h2>JNR Codding Store</h2>
+        <p>For product enquiries and order assistance, contact us through WhatsApp.</p>
+        <a id="contactWhatsApp" class="primary-button" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <a class="logo footer-logo" href="#home">JNR <span>Codding</span></a>
+        <p>Your online destination for everyday shopping.</p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <a href="#home">Home</a>
+        <a href="#shop">Shop Products</a>
+        <a href="#wishlist">Wishlist</a>
+        <a href="#orders">My Orders</a>
+      </div>
+
+      <div>
+        <h3>Customer Service</h3>
+        <a href="#contact">Contact Us</a>
+        <a href="#account">My Account</a>
+        <a href="#cart">Shopping Cart</a>
+      </div>
+
+      <div>
+        <h3>Personalise Your Store</h3>
+        <label for="siteColor">Choose your colour</label>
+        <input id="siteColor" type="color" value="#f36b21">
+        <button id="resetColor" class="secondary-button" type="button">Reset Colour</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> JNR Codding Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
